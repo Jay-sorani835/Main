@@ -8,10 +8,10 @@ void main()
     scanf("%d",&a);
     printf("Enter the second value:");
     scanf("%d",&b);
-    printf("Before swapping using third variable the value is %d and %d. ",a,b);
+    printf("Before swapping without using third variable the value is %d and %d. ",a,b);
     a=a+b;
     b=a-b;
     a=a-b;
-    printf("\nAfter the swapping using the third variable the value is %d and %d. ",a,b);
+    printf("\nAfter the swapping without using the third variable the value is %d and %d. ",a,b);
 }
 
