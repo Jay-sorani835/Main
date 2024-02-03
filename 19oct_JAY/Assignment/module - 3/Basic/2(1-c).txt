@@ -1,0 +1,26 @@
+//find area of circle triangle and rectangle
+#include<stdio.h>
+#include<conio.h>
+#define PI 3.14
+
+void main()
+{
+    int r,x,y,rec,base,height;
+    float area,tri;
+    printf("Enter radius of circle: ");
+    scanf("%d", &r);
+    printf("Enter the one side : ");
+    scanf("%d",&x);
+    printf("Enter the another side:");
+    scanf("%d",&y);
+    printf("Enter the base side:");
+    scanf("%d",&base);
+    printf("Enter the height side:");
+    scanf("%d",&height);
+    area = PI * r * r;
+    rec = x*y;
+    tri = 0.5*base*height;
+    printf("\nArea of circle: %f ",area);
+    printf("\nArea of rectangle : %d",rec);
+    printf("\nArea of Triangle : %f",tri);
+}
