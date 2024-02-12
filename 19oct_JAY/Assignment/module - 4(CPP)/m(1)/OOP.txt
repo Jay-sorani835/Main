@@ -1,0 +1,32 @@
+OOP : 
+- OOP stands as Object Oriented Programming.
+- In this type programming the priority is given to the Object.
+- ex. : JAVA, C++, etc.
+
+Concept in OOP are listed below : 
+1. Class
+2. Object
+3. Abstraction
+4. Encapsulation
+5. Inheritance
+6. Polymorphism
+
+1. Class : 
+- Class is a blue print of the object.
+- class also define as the combination of data member and member function.
+   - Data member is a variable that defines in the class.
+   - Member function is a user defined function that defines in class body.
+
+2. Object :
+- Object is a instance of the class that defines in main function for calling to those functions.
+- for ex. : class name is such as First
+          - in main body function is calling as First t1;
+          - in this example the t1 is known as object of the class.
+
+3.  Abstraction :
+- Abstraction is use to hide the background data that not need to know for user.
+- also we can say as the process of hiding the unnecessary data.
+
+4. Encapsulation : 
+- Encapsulation is use to wrap up the data which need sometime for user. 
+- It is actually hidden but not as the Abstraction.
