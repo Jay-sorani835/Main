@@ -1,6 +1,7 @@
 OOP : 
 - OOP stands as Object Oriented Programming.
 - In this type programming the priority is given to the Object.
+- In this bottom to up approach.
 - ex. : JAVA, C++, etc.
 
 Concept in OOP are listed below : 
@@ -30,3 +31,28 @@ Concept in OOP are listed below :
 4. Encapsulation : 
 - Encapsulation is use to wrap up the data which need sometime for user. 
 - It is actually hidden but not as the Abstraction.
+
+5. Inheritance : 
+- Inheritance menas that the inherit the class which is already exist.
+- Inheritance has five types that are listed below:
+   1. Single Level Inheritance
+      - In this type of Inheritance the only one parent derived class or we can say only one child class.
+   2. Multi Level Inheritance
+      - In this type of inheritance the class as Grand parent, parent and child class.
+   3. Multiple Inheritance
+      - In this type of inheritance there is multiple parent class but only one child class.
+   4. Hirarchical Inheritance
+      - In this type of inheritance the parent class has multiple child classes.
+   5. Hybrid Inheritance
+      - In this type of inheritance there is one grand parent class it has multiple child class and 
+      multiple parent class and only one child class.
+
+6. Polymorphism : 
+- Polymorphism it simply one name many form.
+- It has two types : 
+   1. Overloading : 
+      - It has two types :
+      1. Function Overloading - same class and same name of function but parameter are differents.
+      2. Operator overloading - it define using Operator keyword.
+   2. Overridding : 
+      1. Function Overridding - same name of function and same parameter but class are differents.
