@@ -1,0 +1,19 @@
+1.What do you understand By Database?
+- Before understanding database first we know about the data and base.
+DATA : 
+   - DATA is a collection of information.
+DATABASE :
+   - Database is collection of logically related data.
+   - It means that where the data will stored.
+
+
+2. What is Normalization?
+   - Normalization is the process of coverting the relational table into normal table removing all redundancy.
+   - In other words Normalization is the process of grouping attributes into well structured relations that contain minimum redundancy.
+   - It generally involves splitting an existing table into multiple tables, which can be rejoined or linked each time when query is issued.
+   
+
+5. What do you understand By Data Redundancy?
+
+   - Data Redundancy is that the data duplication.
+   - 
