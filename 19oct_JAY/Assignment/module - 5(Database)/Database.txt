@@ -5,15 +5,104 @@ DATA :
 DATABASE :
    - Database is collection of logically related data.
    - It means that where the data will stored.
+- The Database is basically work in CRUD operation such as Create, Update, Delete.
 
 
 2. What is Normalization?
    - Normalization is the process of coverting the relational table into normal table removing all redundancy.
    - In other words Normalization is the process of grouping attributes into well structured relations that contain minimum redundancy.
    - It generally involves splitting an existing table into multiple tables, which can be rejoined or linked each time when query is issued.
+   - types of Normalization are listed below :
+	1. 1NF(1th Normalization Form)
+	2. 2NF(2th Normalization Form)
+	3. 3NF(3th Normalization Form)
+	4. BCNF(Boyce Codd Normalization Form)
+   5. 4NF(4th Normalization Form)
+   6. 5NF(5th Normalization Form)
    
+3. What is Difference between DBMS and RDBMS?
+   - DBMS is stands for Database Management System.
+   - RDBMS is stands for Relational Database Management System.
+
+   - DBMS is a small organization and it is work on small data.
+   - RDBMS is work on large data.
+
+   - DBMS provides less security.
+   - RDBMS provides larger security then DBMS.
+
+   - In DBMS only one data access at a time.
+   - In RDBMS multiple data access at a time.
+
+   - In DBMS the Normalization is not required.
+   - In RDBMS the Normalization is required.
+
+   - In this data redundancy is present.
+   - It is not allowed data duplicate item.
+
+   - It is slower than RDBMS.
+   - It is faster than DBMS.
+   
+   - ex. XML
+   - ex. MySQL, SQL 
+
+4. What is MF Cod Rule of RDBMS Systems?
+   - MF Cod Rule of RDBMS are listed below :
+	01. The Foundation Rule
+	02. Information Rule
+	03. Guaranteed Access Rule
+	04. Systematic Treatment of Null Values
+	05. Active / Dynamic Online Catalog based on the relatinal model
+	06. Comprehensive Data SubLanguage Rule
+	07. View Updating Rule
+	08. Relational Level Operation Rule
+	09. Physical Data Independence Rule
+	10. Logical Data Independence Rule
+	11. Integrity Independence Rule
+	12. Distribution Independence Rule
+	13. Non Subversion Rule
+
 
 5. What do you understand By Data Redundancy?
 
    - Data Redundancy is that the data duplication.
-   - 
+
+6. What is DDL Interpreter?
+   - DDL stands for Data Definition Language.
+   - It include operation like CREATE, INSERT, DROP, KEY constraints.
+
+7. What is DML Complier in SQL ?
+   - DML stands for Data Manipulation Language.
+   - It includes operations like UPDATE, ALTER, TRUNCATE, DELETE. 
+
+8. What is SQL Key Constraints writing an Example of SQL Key Constraints.
+   - SQL Key Constraints is generally applied when the data insserted or deleted.
+   - SQL KEY Constraints has mainly 5 types like PRIMARY KEY, FOREIGN KEY, UNIQUE KEY, CANDIDATE KEY, SUPER KEY.
+   a. PRIMARY Key : 
+      - primary key has applied on unique data. In one table primary key is only one.
+      - primary key is not a null value. It contains any unique data which helping in finding all information among the table.
+
+   b. FOREIGN Key : 
+      - FOREIGN key is basically FOREIGN key of table but it is also primary key of another table. 
+      - It is also unique in another table but not unique in declare foreign key.
+   c. UNIQUE KEY :
+      - It said to be the all data is always unique which has unique key constraint.
+   
+   ex. create table <table_name> (<col1> int primary key, <col2> varchar(20) unique key, <col3> int references <table2_name>(<col_name>));
+
+9. What is save Point? How to create a save Point write a Query?
+   - Save point is about the one type of saving the query or a data until the save point is generated.
+   - Syntax : 
+      SAVEPOINT <savepoint_name>;
+
+10. What is trigger and how to create a Trigger in SQL?
+   - Trigger is one type of history that store the SQL query.
+   - It allows you to specify SQL actions that should be executed automatically when a specific event occurs in the database.
+   - syntax :
+   DELIMITER $$
+	CREATE TRIGGER `TRIGGER_NAME` (AFTER | BEFORE) {INSERT | UPDATE | DELETE} ON `table_name` FOR EACH ROW 
+    
+    BEGIN
+    
+    	INSERT into `table_name` SET `column_name = new.column_name | old.column_name;
+    	
+    END$$
