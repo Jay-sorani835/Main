@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="~{fragments/layout :: head(title=${article.title})}"></th:block>
+</head>
+
+<body class="bg-gray-50 min-h-screen flex flex-col font-sans">
+
+    <!-- Navbar -->
+    <th:block th:replace="~{fragments/layout :: navbar}"></th:block>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 py-12 w-full">
+
+        <article class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+            <!-- Hero Image -->
+            <div class="relative h-64 md:h-96 w-full">
+                <img th:src="${article.imageUrl}" alt="Article Featured Image" class="w-full h-full object-cover">
+                <div class="absolute top-4 left-4">
+                    <span
+                        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-blue-600 text-white shadow-sm"
+                        th:text="${article.category.displayName}">Category</span>
+                </div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                <!-- Meta Info -->
+                <div class="flex items-center justify-between text-gray-500 text-sm mb-6 border-b border-gray-100 pb-6">
+                    <div class="flex items-center gap-2 font-medium text-gray-700">
+                        <i class="fa-solid fa-user-pen"></i> <span th:text="${article.author}">Author</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i> <span
+                            th:text="${#temporals.format(article.publishedAt, 'MMMM dd, yyyy - HH:mm')}">Date</span>
+                    </div>
+                </div>
+
+                <!-- Title & Content -->
+                <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight"
+                    th:text="${article.title}">Article Title</h1>
+                <p class="text-xl text-gray-600 mb-8 font-medium leading-relaxed italic border-l-4 border-blue-500 pl-4"
+                    th:text="${article.summary}">Article Summary</p>
+
+                <div class="prose prose-lg max-w-none text-gray-800 leading-relaxed">
+                    <p th:text="${article.content}">Full article content goes here...</p>
+
+                    <!-- Dummy extra paragraphs to make the article look substantial -->
+                    <p class="mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="mt-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <!-- Back Button -->
+                <div class="mt-12 pt-8 border-t border-gray-100 flex justify-center">
+                    <a href="javascript:history.back()"
+                        class="inline-flex items-center gap-2 px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors shadow-sm">
+                        <i class="fa-solid fa-arrow-left"></i> Back to News
+                    </a>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <th:block th:replace="~{fragments/layout :: footer}"></th:block>
+
+</body>
+
+</html>

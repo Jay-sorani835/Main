@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">News Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1d4ed8',
+                        secondary: '#475569',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply text-gray-300 hover:text-white transition duration-300 font-medium px-3 py-2 rounded-md;
+            }
+            .nav-link.active {
+                @apply bg-gray-900 text-white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navbar -->
+    <nav th:fragment="navbar" class="bg-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-white font-bold text-2xl flex items-center gap-2">
+                        <i class="fa-solid fa-newspaper text-primary"></i> DailyPulse
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" th:classappend="${currentCategory == 'all' ? 'active' : ''}" class="nav-link">Home</a>
+                        <a href="/daily" th:classappend="${currentCategory == 'daily' ? 'active' : ''}" class="nav-link">Daily Update</a>
+                        <a href="/sports" th:classappend="${currentCategory == 'sports' ? 'active' : ''}" class="nav-link">Sports</a>
+                        <a href="/crime" th:classappend="${currentCategory == 'crime' ? 'active' : ''}" class="nav-link">Crime</a>
+                        <a href="/knowledge" th:classappend="${currentCategory == 'knowledge' ? 'active' : ''}" class="nav-link">Knowledge</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Footer -->
+    <footer th:fragment="footer" class="bg-gray-900 text-white mt-auto py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; <span th:text="${#dates.year(#dates.createNow())}">2026</span> DailyPulse News Portal. All rights reserved.</p>
+            <p class="text-gray-500 text-sm mt-2">Built with Spring Boot MVC</p>
+        </div>
+    </footer>
+</body>
+</html>
