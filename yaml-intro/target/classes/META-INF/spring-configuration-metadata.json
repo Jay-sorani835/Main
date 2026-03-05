@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "my-company",
+      "type": "com.example.yamlintro.config.CompanyConfig",
+      "sourceType": "com.example.yamlintro.config.CompanyConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "my-company.active",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.example.yamlintro.config.CompanyConfig"
+    },
+    {
+      "name": "my-company.departments",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.example.yamlintro.config.CompanyConfig"
+    },
+    {
+      "name": "my-company.founded-year",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.yamlintro.config.CompanyConfig"
+    },
+    {
+      "name": "my-company.name",
+      "type": "java.lang.String",
+      "sourceType": "com.example.yamlintro.config.CompanyConfig"
+    },
+    {
+      "name": "my-company.office-locations",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "sourceType": "com.example.yamlintro.config.CompanyConfig"
+    }
+  ],
+  "hints": []
+}

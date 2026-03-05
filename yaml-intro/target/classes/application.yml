@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+my-company:
+  name: "Tech Corp Introduction"
+  founded-year: 2010
+  is-active: true
+  departments:
+    - Development
+    - Marketing
+    - HR
+    - Sales
+  office-locations:
+    US: "New York HQ"
+    UK: "London Branch"
+    IN: "Bangalore Hub"
