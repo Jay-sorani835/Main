@@ -1,71 +1,127 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="~{fragments/layout :: head(title=${title})}"></th:block>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsPortal Pro</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
-
-<body class="bg-gray-100 min-h-screen flex flex-col font-sans">
-
+<body>
+    
     <!-- Navbar -->
-    <th:block th:replace="~{fragments/layout :: navbar}"></th:block>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-newspaper text-primary"></i> NewsPortal <span>Pro</span>
+            </div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search news...">
+            </div>
+            <button class="btn btn-primary" onclick="openModal('createModal')">
+                <i class="fa-solid fa-plus"></i> New Article
+            </button>
+        </div>
+    </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    <main class="main-container">
+        
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <h3 class="sidebar-title">Categories</h3>
+            <ul class="category-list">
+                <li class="category-item active" onclick="filterCategory('')">All News</li>
+                <li class="category-item" onclick="filterCategory('Technology')"><i class="fa-solid fa-laptop-code"></i> Technology</li>
+                <li class="category-item" onclick="filterCategory('Business')"><i class="fa-solid fa-chart-line"></i> Business</li>
+                <li class="category-item" onclick="filterCategory('Sports')"><i class="fa-solid fa-volleyball"></i> Sports</li>
+                <li class="category-item" onclick="filterCategory('Entertainment')"><i class="fa-solid fa-film"></i> Entertainment</li>
+            </ul>
 
-        <!-- Header Section -->
-        <div class="mb-10 text-center">
-            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight"
-                th:text="${currentCategory == 'all' ? 'Latest Headlines' : title}">Latest Headlines</h1>
-            <p class="mt-4 text-xl text-gray-600">Stay informed with the best Spring Boot MVC news portal.</p>
-        </div>
+            <h3 class="sidebar-title mt-4">Sorting</h3>
+            <select id="sortSelect" class="sort-select" onchange="fetchArticles()">
+                <option value="publishedDate,DESC">Newest First</option>
+                <option value="publishedDate,ASC">Oldest First</option>
+                <option value="title,ASC">Title (A-Z)</option>
+            </select>
+        </aside>
 
-        <!-- News Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Article Card -->
-            <div th:each="article : ${articles}"
-                class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                <a th:href="@{'/article/' + ${article.id}}" class="block">
-                    <img class="h-48 w-full object-cover" th:src="${article.imageUrl}" alt="Article Image">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <span
-                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
-                                th:text="${article.category.displayName}">Category</span>
-                            <span class="text-sm text-gray-500"
-                                th:text="${#temporals.format(article.publishedAt, 'MMM dd, HH:mm')}">Time</span>
-                        </div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2" th:text="${article.title}">Article
-                            Title</h2>
-                        <p class="text-gray-600 mb-4 line-clamp-3" th:text="${article.summary}">Article Summary...</p>
-
-                        <div class="mt-4 flex items-center justify-between border-t border-gray-100 pt-4">
-                            <div class="flex items-center">
-                                <span class="text-sm font-medium text-gray-900" th:text="${article.author}">Author
-                                    Name</span>
-                            </div>
-                            <span
-                                class="text-primary hover:text-blue-700 text-sm font-semibold flex items-center gap-1">
-                                Read more <i class="fa-solid fa-arrow-right"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
+        <!-- News Feed -->
+        <section class="news-feed">
+            <div id="loader" class="loader-container">
+                <div class="spinner"></div>
+            </div>
+            
+            <div id="newsGrid" class="news-grid">
+                <!-- Articles injected by JavaScript -->
             </div>
 
-            <!-- Empty State -->
-            <div th:if="${#lists.isEmpty(articles)}" class="col-span-full text-center py-12">
-                <i class="fa-regular fa-folder-open text-6xl text-gray-300 mb-4"></i>
-                <h3 class="text-xl font-medium text-gray-900">No articles found</h3>
-                <p class="text-gray-500 mt-2">Check back later for updates in this category.</p>
+            <!-- Pagination Controls -->
+            <div class="pagination" id="pagination">
+                <button class="btn-page" id="prevPage" onclick="changePage(-1)"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                <span id="pageInfo" class="page-info">Page 1 of 1</span>
+                <button class="btn-page" id="nextPage" onclick="changePage(1)">Next <i class="fa-solid fa-chevron-right"></i></button>
             </div>
-        </div>
-
+        </section>
     </main>
 
-    <!-- Footer -->
-    <th:block th:replace="~{fragments/layout :: footer}"></th:block>
+    <!-- Create/Edit Modal -->
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Create New Article</h2>
+                <button class="close-btn" onclick="closeModal('createModal')"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <form id="articleForm" onsubmit="submitArticle(event)">
+                <input type="hidden" id="articleId">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="title" required placeholder="Enter catching title">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label>Author</label>
+                        <input type="text" id="author" required placeholder="Author Name">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label>Category</label>
+                        <select id="category" required>
+                            <option value="Technology">Technology</option>
+                            <option value="Business">Business</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Entertainment">Entertainment</option>
+                        </select>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea id="content" rows="6" required placeholder="Write the full news story here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Featured Image</label>
+                    <div class="file-drop-area">
+                        <span class="choose-file-button">Choose files</span>
+                        <span class="file-message" id="fileMessage">or drag and drop files here</span>
+                        <input class="file-input" type="file" id="imageFile" accept="image/*" onchange="updateFileName()">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('createModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Publish Article</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script th:src="@{/js/app.js}"></script>
 </body>
-
 </html>
