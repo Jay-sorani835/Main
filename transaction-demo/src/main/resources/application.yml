@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: transaction-demo
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/transaction_demo_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: password # The user can change this if needed
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: 8080
