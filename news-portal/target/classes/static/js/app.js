@@ -222,6 +222,12 @@ function changePage(direction) {
 }
 
 function updatePaginationUI(data) {
+    if (data.totalPages === 0) {
+        document.getElementById('pageInfo').textContent = `Page 0 of 0`;
+        document.getElementById('prevPage').disabled = true;
+        document.getElementById('nextPage').disabled = true;
+        return;
+    }
     document.getElementById('pageInfo').textContent = `Page ${data.number + 1} of ${data.totalPages}`;
     document.getElementById('prevPage').disabled = data.first;
     document.getElementById('nextPage').disabled = data.last;

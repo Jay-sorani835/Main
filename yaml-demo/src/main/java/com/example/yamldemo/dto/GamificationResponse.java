@@ -1,104 +1,79 @@
 package com.example.yamldemo.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class GamificationResponse {
-	private int xpGained;
-	private int newTotalXp;
-	private boolean levelUp;
-	private int currentLevel;
-	private String message;
+    private int xpGained;
+    private int newTotalXp;
+    private boolean levelUp;
+    private int currentLevel;
+    private String message;
 
-	public int getXpGained() {
-		return xpGained;
-	}
+    // 1. Private constructor - standard for the Builder pattern
+    private GamificationResponse(GamificationResponseBuilder builder) {
+        this.xpGained = builder.xpGained;
+        this.newTotalXp = builder.newTotalXp;
+        this.levelUp = builder.levelUp;
+        this.currentLevel = builder.currentLevel;
+        this.message = builder.message;
+    }
 
-	public void setXpGained(int xpGained) {
-		this.xpGained = xpGained;
-	}
+    // Default constructor for JSON deserializers (like Jackson)
+    public GamificationResponse() {}
 
-	public int getNewTotalXp() {
-		return newTotalXp;
-	}
+    // 2. Static Inner Builder Class
+    public static class GamificationResponseBuilder {
+        private int xpGained;
+        private int newTotalXp;
+        private boolean levelUp;
+        private int currentLevel;
+        private String message;
 
-	public void setNewTotalXp(int newTotalXp) {
-		this.newTotalXp = newTotalXp;
-	}
+        public GamificationResponseBuilder xpGained(int xpGained) {
+            this.xpGained = xpGained;
+            return this;
+        }
 
-	public boolean isLevelUp() {
-		return levelUp;
-	}
+        public GamificationResponseBuilder newTotalXp(int newTotalXp) {
+            this.newTotalXp = newTotalXp;
+            return this;
+        }
 
-	public void setLevelUp(boolean levelUp) {
-		this.levelUp = levelUp;
-	}
+        public GamificationResponseBuilder levelUp(boolean levelUp) {
+            this.levelUp = levelUp;
+            return this;
+        }
 
-	public int getCurrentLevel() {
-		return currentLevel;
-	}
+        public GamificationResponseBuilder currentLevel(int currentLevel) {
+            this.currentLevel = currentLevel;
+            return this;
+        }
 
-	public void setCurrentLevel(int currentLevel) {
-		this.currentLevel = currentLevel;
-	}
+        public GamificationResponseBuilder message(String message) {
+            this.message = message;
+            return this;
+        }
 
-	public String getMessage() {
-		return message;
-	}
+        // 3. The build method
+        public GamificationResponse build() {
+            return new GamificationResponse(this);
+        }
+    }
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+    // 4. Entry point
+    public static GamificationResponseBuilder builder() {
+        return new GamificationResponseBuilder();
+    }
 
-	public static class Builder {
-		private int xpGained;
-		private int newTotalXp;
-		private boolean levelUp;
-		private int currentLevel;
-		private String message;
-
-		public Builder xpGained(int xpGained) {
-			this.xpGained = xpGained;
-			return this;
-		}
-
-		public Builder newTotalXp(int newTotalXp) {
-			this.newTotalXp = newTotalXp;
-			return this;
-		}
-
-		public Builder levelUp(boolean levelUp) {
-			this.levelUp = levelUp;
-			return this;
-		}
-
-		public Builder currentLevel(int currentLevel) {
-			this.currentLevel = currentLevel;
-			return this;
-		}
-
-		public Builder message(String message) {
-			this.message = message;
-			return this;
-		}
-
-		public GamificationResponse build() {
-			GamificationResponse response = new GamificationResponse();
-			response.setXpGained(this.xpGained);
-			response.setNewTotalXp(this.newTotalXp);
-			response.setLevelUp(this.levelUp);
-			response.setCurrentLevel(this.currentLevel);
-			response.setMessage(this.message);
-			return response;
-		}
-	}
-
-	public static Builder builder() {
-		return new Builder();
-	}
+    // Getters (Required for JSON serialization)
+    public int getXpGained() { return xpGained; }
+    public int getNewTotalXp() { return newTotalXp; }
+    public boolean isLevelUp() { return levelUp; }
+    public int getCurrentLevel() { return currentLevel; }
+    public String getMessage() { return message; }
+    
+    // Setters (Optional for DTOs, but good for completeness)
+    public void setXpGained(int xpGained) { this.xpGained = xpGained; }
+    public void setNewTotalXp(int newTotalXp) { this.newTotalXp = newTotalXp; }
+    public void setLevelUp(boolean levelUp) { this.levelUp = levelUp; }
+    public void setCurrentLevel(int currentLevel) { this.currentLevel = currentLevel; }
+    public void setMessage(String message) { this.message = message; }
 }

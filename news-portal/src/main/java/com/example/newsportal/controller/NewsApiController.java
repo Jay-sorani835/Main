@@ -4,9 +4,7 @@ import com.example.newsportal.model.NewsArticle;
 import com.example.newsportal.service.FileStorageService;
 import com.example.newsportal.service.NewsService;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
@@ -21,14 +19,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/news")
-@RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class NewsApiController {
 
-	@Autowired
-    private NewsService newsService;
-	@Autowired
-	private FileStorageService fileStorageService;
+    private final NewsService newsService;
+    private final FileStorageService fileStorageService;
+
+    public NewsApiController(NewsService newsService, FileStorageService fileStorageService) {
+        this.newsService = newsService;
+        this.fileStorageService = fileStorageService;
+    }
 
     @GetMapping
     public ResponseEntity<Page<NewsArticle>> getAllArticles(

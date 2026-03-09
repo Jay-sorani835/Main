@@ -15,11 +15,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class NewsService {
 
-        private NewsArticleRepository newsArticleRepository;
-        private FileStorageService fileStorageService;
+        private final NewsArticleRepository newsArticleRepository;
+        private final FileStorageService fileStorageService;
+
+        public NewsService(NewsArticleRepository newsArticleRepository, FileStorageService fileStorageService) {
+                this.newsArticleRepository = newsArticleRepository;
+                this.fileStorageService = fileStorageService;
+        }
 
         public Page<NewsArticle> getAllArticles(int page, int size, String sortBy, String direction) {
                 Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()

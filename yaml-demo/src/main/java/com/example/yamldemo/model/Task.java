@@ -24,7 +24,7 @@ import java.util.UUID;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false)
@@ -49,10 +49,6 @@ public class Task {
     private int xpReward;
 
     private LocalDate dueDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -126,14 +122,6 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -159,7 +147,6 @@ public class Task {
         private TaskDifficulty difficulty;
         private int xpReward;
         private LocalDate dueDate;
-        private User user;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
 
@@ -203,11 +190,6 @@ public class Task {
             return this;
         }
 
-        public Builder user(User user) {
-            this.user = user;
-            return this;
-        }
-
         public Builder createdAt(LocalDateTime createdAt) {
             this.createdAt = createdAt;
             return this;
@@ -228,7 +210,6 @@ public class Task {
             task.setDifficulty(this.difficulty);
             task.setXpReward(this.xpReward);
             task.setDueDate(this.dueDate);
-            task.setUser(this.user);
             task.setCreatedAt(this.createdAt);
             task.setUpdatedAt(this.updatedAt);
             return task;

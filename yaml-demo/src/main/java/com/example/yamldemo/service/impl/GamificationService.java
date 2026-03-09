@@ -4,6 +4,8 @@ import com.example.yamldemo.dto.GamificationResponse;
 import com.example.yamldemo.model.User;
 import com.example.yamldemo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class GamificationService {
 
+	@Autowired
     private UserRepository userRepository;
 
     @Transactional
@@ -18,7 +21,6 @@ public class GamificationService {
         int previousLevel = user.getLevel();
         int newXp = user.getXp() + xpToAdd;
 
-        // Level calculation: Level = XP / 100 + 1
         int newLevel = (newXp / 100) + 1;
         boolean leveledUp = newLevel > previousLevel;
 

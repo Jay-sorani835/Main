@@ -1,6 +1,5 @@
 package com.example.yamldemo.controller;
 
-import com.example.yamldemo.dto.GamificationResponse;
 import com.example.yamldemo.dto.TaskCreateRequest;
 import com.example.yamldemo.dto.TaskResponse;
 import com.example.yamldemo.model.enums.TaskStatus;
@@ -8,66 +7,55 @@ import com.example.yamldemo.service.TaskService;
 import com.example.yamldemo.service.impl.ExcuseGeneratorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/tasks")
+@RequestMapping("/tasks")
 @RequiredArgsConstructor
 public class TaskController {
 
+	@Autowired
     private TaskService taskService;
-    private ExcuseGeneratorService excuseGeneratorService;
+    @Autowired
+	private ExcuseGeneratorService excuseGeneratorService;
 
     @PostMapping
-    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody TaskCreateRequest request,
-            Authentication authentication) {
-        String username = authentication.getName();
-        return new ResponseEntity<>(taskService.createTask(request, username), HttpStatus.CREATED);
+    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody TaskCreateRequest request) {
+
+    	return new ResponseEntity<>(taskService.createTask(request), HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<TaskResponse>> getAllTasks(
-            @RequestParam(required = false) TaskStatus status,
-            Authentication authentication) {
-        String username = authentication.getName();
+            @RequestParam(name = "status", required = false) TaskStatus status) {
         if (status != null) {
-            return ResponseEntity.ok(taskService.getTasksByStatus(status, username));
+            return ResponseEntity.ok(taskService.getTasksByStatus(status));
         }
-        return ResponseEntity.ok(taskService.getAllTasksForUser(username));
+        return ResponseEntity.ok(taskService.getAllTasks());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskResponse> getTaskById(@PathVariable int id, Authentication authentication) {
-        String username = authentication.getName();
-        return ResponseEntity.ok(taskService.getTaskById(id, username));
+    public ResponseEntity<TaskResponse> getTaskById(@PathVariable(name = "id") int id) {
+        return ResponseEntity.ok(taskService.getTaskById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponse> updateTask(
-            @PathVariable int id,
-            @Valid @RequestBody TaskCreateRequest request,
-            Authentication authentication) {
-        String username = authentication.getName();
-        return ResponseEntity.ok(taskService.updateTask(id, request, username));
+            @PathVariable(name = "id") int id,
+            @Valid @RequestBody TaskCreateRequest request) {
+        return ResponseEntity.ok(taskService.updateTask(id, request));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable int id, Authentication authentication) {
-        String username = authentication.getName();
-        taskService.deleteTask(id, username);
+    public ResponseEntity<Void> deleteTask(@PathVariable(name = "id") int id) {
+        taskService.deleteTask(id);
         return ResponseEntity.noContent().build();
-    }
-
-    @PatchMapping("/{id}/complete")
-    public ResponseEntity<GamificationResponse> completeTask(@PathVariable int id, Authentication authentication) {
-        String username = authentication.getName();
-        return ResponseEntity.ok(taskService.completeTask(id, username));
     }
 
     @GetMapping("/excuse")
