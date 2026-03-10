@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-service
+  task:
+    execution:
+      pool:
+        core-size: 5
+        max-size: 10
+        queue-capacity: 25
+      thread-name-prefix: async-event-worker-
+
+logging:
+  level:
+    root: INFO
+    com.example.restevents: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG # See full http req/res logs in real world, but normally requires extra config
