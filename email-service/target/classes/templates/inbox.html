@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inbox - Gmail Clone</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Optional Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f6f8fc;
+            --text-color: #202124;
+            --sidebar-width: 256px;
+            --header-height: 64px;
+            --hover-color: #f1f3f4;
+            --border-color: #dadce0;
+            --primary-color: #c2e7ff;
+            --primary-text: #001d35;
+            --unread-font: 700;
+            --read-font: 400;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+        }
+
+        /* Dark Mode Theme Variables */
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --hover-color: #202124;
+            --border-color: #3c4043;
+            --primary-color: #8ab4f8;
+            --primary-text: #202124;
+            --glass-bg: rgba(18, 18, 18, 0.9);
+            --shadow: 0 1px 2px 0 rgba(0,0,0,.6), 0 1px 3px 1px rgba(0,0,0,.3);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            display: flex;
+            align-items: center;
+            height: var(--header-height);
+            padding: 0 16px;
+            background: var(--bg-color);
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: var(--sidebar-width);
+        }
+        .hamburger-menu {
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+        }
+        .hamburger-menu:hover { background-color: var(--hover-color); }
+        .logo {
+            font-size: 22px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .header-middle {
+            flex-grow: 1;
+            max-width: 720px;
+        }
+        .search-bar {
+            background-color: var(--hover-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            height: 48px;
+            transition: box-shadow 0.2s, background-color 0.2s;
+        }
+        .search-bar:focus-within {
+            background-color: var(--glass-bg);
+            box-shadow: var(--shadow);
+        }
+        .search-bar form {
+            width: 100%;
+            display: flex;
+        }
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 16px;
+            padding-left: 12px;
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-right: 16px;
+        }
+        .icon-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        .icon-btn:hover { background-color: var(--hover-color); }
+        
+        /* --- MAIN LAYOUT --- */
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            padding-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .compose-btn-container {
+            padding: 0 16px 16px 16px;
+        }
+        .compose-btn {
+            background-color: var(--primary-color);
+            color: var(--primary-text);
+            border: none;
+            border-radius: 16px;
+            padding: 0 24px;
+            height: 56px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: box-shadow 0.2s;
+        }
+        .compose-btn:hover { box-shadow: var(--shadow); }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 24px;
+            height: 32px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 0 16px 16px 0;
+            margin-right: 16px;
+            cursor: pointer;
+        }
+        .nav-item:hover { background-color: var(--hover-color); }
+        .nav-item.active { background-color: var(--primary-color); color: var(--primary-text); font-weight: 500; }
+
+        /* --- INBOX LIST --- */
+        .inbox-area {
+            flex-grow: 1;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            margin: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* rounded corners */
+        }
+        .inbox-toolbar {
+            height: 48px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 16px;
+        }
+        .email-list {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        .email-row {
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            height: 40px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            box-sizing: content-box;
+            background-color: var(--glass-bg);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .email-row:hover {
+            box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+            z-index: 2;
+        }
+        
+        .email-row .controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-right: 16px;
+            color: var(--text-color);
+            opacity: 0.6;
+        }
+        
+        /* Data Columns */
+        .sender {
+            width: 160px;
+            min-width: 160px;
+            font-size: 14px;
+            font-weight: 700;
+            box-sizing: border-box;
+            padding-right: 16px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .subject-snippet {
+            flex-grow: 1;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .subject { font-weight: 700; }
+        .snippet { color: #5f6368; font-weight: 400; margin-left: 8px;}
+        body.dark-mode .snippet { color: #aaaaaa; }
+
+        .date {
+            width: 80px;
+            text-align: right;
+            font-size: 12px;
+            font-weight: 700;
+            padding-left: 16px;
+        }
+        
+        .attachment-chip {
+            border: 1px solid var(--border-color);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-left: 8px;
+            background: var(--bg-color);
+        }
+
+        /* --- EMAIL FULL VIEW --- */
+        .email-view {
+            display: none;
+            padding: 24px 32px;
+            overflow-y: auto;
+            flex-grow: 1;
+            background: var(--glass-bg);
+        }
+        .view-subject {
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: var(--text-color);
+        }
+        .view-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        .view-sender-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .view-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--primary-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .view-sender {
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .view-date {
+            font-size: 12px;
+            color: #5f6368;
+        }
+        body.dark-mode .view-date { color: #aaaaaa; }
+        .view-body {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-color);
+            white-space: pre-wrap; /* Preserve newlines for plain text emails */
+            word-wrap: break-word;
+        }
+        .view-body * {
+            max-width: 100%;
+        }
+        
+        /* Error Banners */
+        .banner {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f5c6cb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+        body.dark-mode .banner { background-color: #4a151b; color: #ffb3b8; border-color: #5c1a21; }
+
+    </style>
+</head>
+<body>
+
+    <div th:if="${error}" class="banner">
+        <span class="material-icons" style="margin-right: 8px;">error</span>
+        <span th:text="${error}"></span>
+    </div>
+
+    <!-- Header Area -->
+    <div class="header">
+        <div class="header-left">
+            <div class="hamburger-menu"><span class="material-icons">menu</span></div>
+            <a href="/inbox" class="logo">
+                <span style="color: #ea4335;" class="material-icons">mail</span> Gmail Clone
+            </a>
+        </div>
+        
+        <div class="header-middle">
+            <div class="search-bar">
+                <span class="material-icons" style="color: #5f6368;">search</span>
+                <form action="/inbox" method="get">
+                    <input type="text" name="filter" placeholder="Search mail... (Target email filter)" th:value="${param.filter}">
+                </form>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <button class="icon-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                <span class="material-icons" id="theme-icon">dark_mode</span>
+            </button>
+            <button class="icon-btn"><span class="material-icons">help_outline</span></button>
+            <button class="icon-btn"><span class="material-icons">settings</span></button>
+            <button class="icon-btn"><span class="material-icons">apps</span></button>
+            <button class="icon-btn" style="background:var(--primary-color); border-radius:50%;"><span class="material-icons">person</span></button>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-container">
+        
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="compose-btn-container">
+                <a th:href="@{/send}" class="compose-btn">
+                    <span class="material-icons">edit</span> Compose
+                </a>
+            </div>
+            <a href="/inbox" class="nav-item active">
+                <span class="material-icons">inbox</span> Inbox
+            </a>
+            <a th:href="@{/inbox(filter='all')}" class="nav-item" title="Fetch all emails bypassing application.yml filter">
+                <span class="material-icons">all_inbox</span> All Mail
+            </a>
+            <a href="#" class="nav-item">
+                <span class="material-icons">star_border</span> Starred
+            </a>
+            <a href="#" class="nav-item">
+                <span class="material-icons">send</span> Sent
+            </a>
+            <a href="#" class="nav-item">
+                <span class="material-icons">insert_drive_file</span> Drafts
+            </a>
+        </div>
+        
+        <!-- Live Inbox Content List -->
+        <div class="inbox-area">
+            <div class="inbox-toolbar">
+                <div id="toolbar-main" style="display: flex; gap: 16px;">
+                    <span class="material-icons icon-btn">check_box_outline_blank</span>
+                    <a href="/inbox" style="text-decoration:none; color:inherit;"><span class="material-icons icon-btn">refresh</span></a>
+                    <span class="material-icons icon-btn">more_vert</span>
+                </div>
+                <div id="toolbar-view" style="display: none; gap: 16px;">
+                    <span class="material-icons icon-btn" onclick="backToInbox()" title="Back to Inbox">arrow_back</span>
+                    <span class="material-icons icon-btn">archive</span>
+                    <span class="material-icons icon-btn">report</span>
+                    <span class="material-icons icon-btn">delete</span>
+                </div>
+            </div>
+            
+            <div class="email-list" id="email-list">
+                
+                <div th:if="${page.empty}" style="padding: 24px; text-align: center; color: var(--text-color);">
+                    <p>No emails found in this IMAP filter view.</p>
+                </div>
+
+                <div th:each="msg : ${page.content}" class="email-row" title="Click to open email" onclick="viewEmail(this)">
+                    <!-- Hidden Payload for JavaScript -->
+                    <div class="email-data-subject" style="display:none;" th:text="${msg.subject}"></div>
+                    <div class="email-data-sender" style="display:none;" th:text="${msg.sender}"></div>
+                    <div class="email-data-date" style="display:none;" th:text="${#temporals.format(msg.receivedDate, 'MMM d, yyyy h:mm a')}"></div>
+                    <div class="email-data-body" style="display:none;" th:utext="${msg.body}"></div>
+
+                    <div class="controls">
+                        <span class="material-icons" style="font-size: 20px;">check_box_outline_blank</span>
+                        <span class="material-icons" style="font-size: 20px;">star_border</span>
+                    </div>
+                    
+                    <div class="sender" th:text="${msg.sender}"></div>
+                    
+                    <div class="subject-snippet">
+                        <span class="subject" th:text="${msg.subject}"></span>
+                        <span class="snippet" th:text="'- ' + ${#strings.abbreviate(msg.body != null ? msg.body : '', 100)}"></span>
+                        
+                        <!-- Inline Attachment Badges -->
+                        <span th:if="${!msg.attachments.isEmpty()}" th:each="att : ${msg.attachments}" 
+                              class="attachment-chip" th:text="${att.fileName}"></span>
+                    </div>
+                    
+                    <div class="date" th:text="${#temporals.format(msg.receivedDate, 'MMM d')}"></div>
+                </div>
+
+            </div>
+
+            <!-- Single Email View Container -->
+            <div class="email-view" id="email-view">
+                <div class="view-subject" id="view-subject">Subject goes here</div>
+                <div class="view-header">
+                    <div class="view-sender-info">
+                        <div class="view-avatar" id="view-avatar">?</div>
+                        <div class="view-sender" id="view-sender">Sender Name</div>
+                    </div>
+                    <div class="view-date" id="view-date">Date</div>
+                </div>
+                <div class="view-body" id="view-body">
+                    Body content...
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Check for saved 'darkMode' in localStorage
+        let darkMode = localStorage.getItem('darkMode'); 
+
+        const enableDarkMode = () => {
+            document.body.classList.add('dark-mode');
+            document.getElementById('theme-icon').innerText = 'light_mode';
+            localStorage.setItem('darkMode', 'enabled');
+        }
+
+        const disableDarkMode = () => {
+            document.body.classList.remove('dark-mode');
+            document.getElementById('theme-icon').innerText = 'dark_mode';
+            localStorage.setItem('darkMode', null);
+        }
+
+        if (darkMode === 'enabled') {
+            enableDarkMode();
+        }
+
+        function toggleTheme() {
+            darkMode = localStorage.getItem('darkMode'); 
+            if (darkMode !== 'enabled') {
+                enableDarkMode();
+            } else {
+                disableDarkMode();
+            }
+        }
+
+        // Email Viewing Logic (Single Page Application feel)
+        function viewEmail(rowElement) {
+            // Get data from hidden elements
+            const subject = rowElement.querySelector('.email-data-subject').innerText;
+            const sender = rowElement.querySelector('.email-data-sender').innerText;
+            const date = rowElement.querySelector('.email-data-date').innerText;
+            const bodyHTML = rowElement.querySelector('.email-data-body').innerHTML;
+
+            // Update View
+            document.getElementById('view-subject').innerText = subject;
+            document.getElementById('view-sender').innerText = sender;
+            document.getElementById('view-date').innerText = date;
+            document.getElementById('view-body').innerHTML = bodyHTML;
+            
+            // Set Avatar letter
+            const firstLetter = sender.trim().charAt(0).toUpperCase();
+            document.getElementById('view-avatar').innerText = firstLetter;
+
+            // Toggle Display
+            document.getElementById('email-list').style.display = 'none';
+            document.getElementById('email-view').style.display = 'block';
+            
+            // Toggle Toolbars
+            document.getElementById('toolbar-main').style.display = 'none';
+            document.getElementById('toolbar-view').style.display = 'flex';
+        }
+
+        function backToInbox() {
+            document.getElementById('email-list').style.display = 'block';
+            document.getElementById('email-view').style.display = 'none';
+            
+            document.getElementById('toolbar-main').style.display = 'flex';
+            document.getElementById('toolbar-view').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

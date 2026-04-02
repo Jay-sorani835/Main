@@ -1,0 +1,294 @@
+﻿[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.example:email-service >----------------------
+[INFO] Building email-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ email-service ---
+[INFO] Deleting D:\Java Assi\email-service\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ email-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 4 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ email-service ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 11 source files with javac [debug release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[3,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[4,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[16,19] cannot find symbol
+  symbol:   class UserRepository
+  location: class com.example.emailservice.security.CustomUserDetailsService
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[18,37] cannot find symbol
+  symbol:   class UserRepository
+  location: class com.example.emailservice.security.CustomUserDetailsService
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[3,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[4,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[7,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[8,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[10,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[11,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[12,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[29,19] cannot find symbol
+  symbol:   class MailMessageRepository
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[30,19] cannot find symbol
+  symbol:   class MailAttachmentRepository
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[33,28] cannot find symbol
+  symbol:   class MailMessageRepository
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[33,67] cannot find symbol
+  symbol:   class MailAttachmentRepository
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[3,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[4,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[5,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[6,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[7,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[23,19] cannot find symbol
+  symbol:   class SmtpConfigurationRepository
+  location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[24,19] cannot find symbol
+  symbol:   class MailMessageRepository
+  location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[26,31] cannot find symbol
+  symbol:   class SmtpConfigurationRepository
+  location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[26,69] cannot find symbol
+  symbol:   class MailMessageRepository
+  location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[3,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[4,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[5,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[6,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[7,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[8,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[9,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[27,19] cannot find symbol
+  symbol:   class ImapConfigurationRepository
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[28,19] cannot find symbol
+  symbol:   class ScheduledFilterConfigRepository
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[29,19] cannot find symbol
+  symbol:   class MailMessageRepository
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[31,37] cannot find symbol
+  symbol:   class ImapConfigurationRepository
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[31,75] cannot find symbol
+  symbol:   class ScheduledFilterConfigRepository
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[31,119] cannot find symbol
+  symbol:   class MailMessageRepository
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[119,53] cannot find symbol
+  symbol:   class MailMessage
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[24,9] cannot find symbol
+  symbol:   class User
+  location: class com.example.emailservice.security.CustomUserDetailsService
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[50,9] cannot find symbol
+  symbol:   class Page
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[50,14] cannot find symbol
+  symbol:   class MailMessage
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[51,59] cannot find symbol
+  symbol:   variable PageRequest
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[51,86] cannot find symbol
+  symbol:   variable Sort
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[90,18] cannot find symbol
+  symbol:   class MailAttachment
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[92,13] cannot find symbol
+  symbol:   class MailAttachment
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[35,13] cannot find symbol
+  symbol:   class SmtpConfiguration
+  location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[82,13] cannot find symbol
+  symbol:   class MailMessage
+  location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[82,40] cannot find symbol
+  symbol:   class MailMessage
+  location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[94,21] cannot find symbol
+  symbol:   class MailAttachment
+  location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[94,48] cannot find symbol
+  symbol:   class MailAttachment
+  location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[39,9] cannot find symbol
+  symbol:   class ImapConfiguration
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[42,14] cannot find symbol
+  symbol:   class ScheduledFilterConfig
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[84,22] cannot find symbol
+  symbol:   class ScheduledFilterConfig
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[94,21] cannot find symbol
+  symbol:   class MailMessage
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[94,48] cannot find symbol
+  symbol:   class MailMessage
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[135,21] cannot find symbol
+  symbol:   class MailAttachment
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[135,53] cannot find symbol
+  symbol:   class MailAttachment
+  location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[INFO] 57 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.740 s
+[INFO] Finished at: 2026-03-27T17:43:28+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project email-service: Compilation failure: Compilation failure: 
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[3,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[4,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[16,19] cannot find symbol
+[ERROR]   symbol:   class UserRepository
+[ERROR]   location: class com.example.emailservice.security.CustomUserDetailsService
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[18,37] cannot find symbol
+[ERROR]   symbol:   class UserRepository
+[ERROR]   location: class com.example.emailservice.security.CustomUserDetailsService
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[3,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[4,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[7,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[8,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[10,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[11,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[12,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[29,19] cannot find symbol
+[ERROR]   symbol:   class MailMessageRepository
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[30,19] cannot find symbol
+[ERROR]   symbol:   class MailAttachmentRepository
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[33,28] cannot find symbol
+[ERROR]   symbol:   class MailMessageRepository
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[33,67] cannot find symbol
+[ERROR]   symbol:   class MailAttachmentRepository
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[3,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[4,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[5,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[6,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[7,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[23,19] cannot find symbol
+[ERROR]   symbol:   class SmtpConfigurationRepository
+[ERROR]   location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[24,19] cannot find symbol
+[ERROR]   symbol:   class MailMessageRepository
+[ERROR]   location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[26,31] cannot find symbol
+[ERROR]   symbol:   class SmtpConfigurationRepository
+[ERROR]   location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[26,69] cannot find symbol
+[ERROR]   symbol:   class MailMessageRepository
+[ERROR]   location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[3,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[4,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[5,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[6,39] package com.example.emailservice.entity does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[7,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[8,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[9,43] package com.example.emailservice.repository does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[27,19] cannot find symbol
+[ERROR]   symbol:   class ImapConfigurationRepository
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[28,19] cannot find symbol
+[ERROR]   symbol:   class ScheduledFilterConfigRepository
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[29,19] cannot find symbol
+[ERROR]   symbol:   class MailMessageRepository
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[31,37] cannot find symbol
+[ERROR]   symbol:   class ImapConfigurationRepository
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[31,75] cannot find symbol
+[ERROR]   symbol:   class ScheduledFilterConfigRepository
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[31,119] cannot find symbol
+[ERROR]   symbol:   class MailMessageRepository
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[119,53] cannot find symbol
+[ERROR]   symbol:   class MailMessage
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/security/CustomUserDetailsService.java:[24,9] cannot find symbol
+[ERROR]   symbol:   class User
+[ERROR]   location: class com.example.emailservice.security.CustomUserDetailsService
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[50,9] cannot find symbol
+[ERROR]   symbol:   class Page
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[50,14] cannot find symbol
+[ERROR]   symbol:   class MailMessage
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[51,59] cannot find symbol
+[ERROR]   symbol:   variable PageRequest
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[51,86] cannot find symbol
+[ERROR]   symbol:   variable Sort
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[90,18] cannot find symbol
+[ERROR]   symbol:   class MailAttachment
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[92,13] cannot find symbol
+[ERROR]   symbol:   class MailAttachment
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[35,13] cannot find symbol
+[ERROR]   symbol:   class SmtpConfiguration
+[ERROR]   location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[82,13] cannot find symbol
+[ERROR]   symbol:   class MailMessage
+[ERROR]   location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[82,40] cannot find symbol
+[ERROR]   symbol:   class MailMessage
+[ERROR]   location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[94,21] cannot find symbol
+[ERROR]   symbol:   class MailAttachment
+[ERROR]   location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/event/EmailEventListener.java:[94,48] cannot find symbol
+[ERROR]   symbol:   class MailAttachment
+[ERROR]   location: class com.example.emailservice.event.EmailEventListener
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[39,9] cannot find symbol
+[ERROR]   symbol:   class ImapConfiguration
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[42,14] cannot find symbol
+[ERROR]   symbol:   class ScheduledFilterConfig
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[84,22] cannot find symbol
+[ERROR]   symbol:   class ScheduledFilterConfig
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[94,21] cannot find symbol
+[ERROR]   symbol:   class MailMessage
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[94,48] cannot find symbol
+[ERROR]   symbol:   class MailMessage
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[135,21] cannot find symbol
+[ERROR]   symbol:   class MailAttachment
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/scheduler/EmailAttachmentScheduler.java:[135,53] cannot find symbol
+[ERROR]   symbol:   class MailAttachment
+[ERROR]   location: class com.example.emailservice.scheduler.EmailAttachmentScheduler
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,0 +1,41 @@
+server:
+  port: 8081
+
+spring:
+  # Allow large email attachments
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+      
+  # Thymeleaf cache disabled for development
+  thymeleaf:
+    cache: false
+
+  # MongoDB
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/faxemaildb
+
+# App-specific task properties
+email-service:
+  smtp:
+    host: smtp.gmail.com
+    port: 587
+    username: jaysorani835@gmail.com
+    password: dvvzkzhdtnmvtbjy
+    protocol: smtp
+    target-email: recruitment@meditab.com
+  imap:
+    host: imap.gmail.com
+    port: 993
+    username: jaysorani835@gmail.com
+    password: dvvzkzhdtnmvtbjy
+    protocol: imaps
+  scheduler:
+    # 2 minutes in milliseconds
+    interval: 120000 
+    target-email: jsorani21@gmail.com
+    target-subject: Fax from ABC company
+  local-storage:
+    inbound-dir: download-fax

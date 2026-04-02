@@ -1,0 +1,60 @@
+﻿[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.example:email-service >----------------------
+[INFO] Building email-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ email-service ---
+[INFO] Deleting D:\Java Assi\email-service\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ email-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 4 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ email-service ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 11 source files with javac [debug release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[7,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[8,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[9,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[45,9] cannot find symbol
+  symbol:   class Page
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[45,48] cannot find symbol
+  symbol:   class PageImpl
+  location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[47,17] cannot find symbol
+  symbol:   variable PageRequest
+  location: class com.example.emailservice.controller.WebUIController
+[INFO] 6 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.627 s
+[INFO] Finished at: 2026-03-27T18:17:58+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project email-service: Compilation failure: Compilation failure: 
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[7,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[8,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[9,39] package org.springframework.data.domain does not exist
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[45,9] cannot find symbol
+[ERROR]   symbol:   class Page
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[45,48] cannot find symbol
+[ERROR]   symbol:   class PageImpl
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] /D:/Java Assi/email-service/src/main/java/com/example/emailservice/controller/WebUIController.java:[47,17] cannot find symbol
+[ERROR]   symbol:   variable PageRequest
+[ERROR]   location: class com.example.emailservice.controller.WebUIController
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

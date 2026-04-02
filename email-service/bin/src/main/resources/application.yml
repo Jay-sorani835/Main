@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:emaildb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  # Allow large email attachments
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+      
+  # Thymeleaf cache disabled for development
+  thymeleaf:
+    cache: false
+
+# App-specific task properties
+email-service:
+  scheduler:
+    # 5 minutes in milliseconds
+    interval: 300000 

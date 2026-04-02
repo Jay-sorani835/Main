@@ -1,0 +1,31 @@
+# Test profile — in-memory H2, no real IMAP/SMTP calls required
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+email-service:
+  smtp:
+    host: smtp.gmail.com
+    port: 587
+    username: test@example.com
+    password: test-password
+    target-email: test-recipient@example.com
+  imap:
+    host: imap.gmail.com
+    port: 993
+    protocol: imaps
+    username: test@example.com
+    password: test-password
+  scheduler:
+    interval: 9999999
+    target-email: test@example.com
+    target-subject: any
+  local-storage:
+    inbound-dir: download-fax

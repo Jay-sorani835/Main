@@ -1,0 +1,17 @@
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\entity\OutboundMessage.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\event\EmailEventPublisher.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\scheduler\EmailAttachmentScheduler.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\security\SecurityConfig.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\entity\OutboundMessageStatus.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\event\AttachmentDto.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\controller\WebUIController.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\repository\OutboundMessageRepository.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\scheduler\InboundPollingScheduler.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\event\SendEmailEvent.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\event\EmailEventListener.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\service\OutboundEmailService.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\dto\MailAttachmentDto.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\EmailServiceApplication.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\dto\MailMessageDto.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\scheduler\OutboundPollingScheduler.java
+D:\Java Assi\email-service\src\main\java\com\example\emailservice\service\ImapEmailService.java

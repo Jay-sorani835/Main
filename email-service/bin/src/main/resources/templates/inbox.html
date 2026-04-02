@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inbox - Email Service</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dee2e6; padding-bottom: 10px; margin-bottom: 20px; }
+        .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; color: white; border: none; cursor: pointer; }
+        .btn-primary { background-color: #007bff; }
+        .btn-danger { background-color: #dc3545; }
+        table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6; }
+        th { background-color: #e9ecef; }
+        .alert { padding: 10px; background-color: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; border-radius: 4px; margin-bottom: 20px; }
+        .attachments { margin-top: 5px; font-size: 0.9em; }
+        .attachment-link { display: inline-block; background: #e2e3e5; padding: 2px 6px; border-radius: 3px; text-decoration: none; color: #383d41; margin-right: 5px; }
+        .pagination { margin-top: 20px; display: flex; gap: 5px; }
+        .page-item { padding: 5px 10px; border: 1px solid #ddd; text-decoration: none; color: #007bff; }
+        .page-item.active { background-color: #007bff; color: white; border-color: #007bff; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>Welcome, <span th:text="${#authentication.name}">User</span></h2>
+        <div>
+            <a th:href="@{/send}" class="btn btn-primary">Compose Email</a>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <div th:if="${param.msg != null and param.msg[0] == 'queued'}" class="alert">
+        <strong>Success!</strong> Your email has been queued for sending.
+    </div>
+
+    <h3>Your Inbox</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Receivers</th>
+                <th>CC/BCC</th>
+                <th>Attachments</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${page.empty}">
+                <td colspan="6" style="text-align: center;">No emails found.</td>
+            </tr>
+            <tr th:each="msg : ${page.content}">
+                <td th:text="${#temporals.format(msg.receivedDate, 'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${msg.sender}"></td>
+                <td>
+                    <strong th:text="${msg.subject}"></strong><br>
+                    <small style="color:#666;" th:text="${#strings.abbreviate(msg.body, 100)}"></small>
+                </td>
+                <td th:text="${msg.receivers}"></td>
+                <td>
+                    <span th:if="${msg.cc != null}">CC: <span th:text="${msg.cc}"></span><br></span>
+                    <span th:if="${msg.bcc != null}">BCC: <span th:text="${msg.bcc}"></span></span>
+                </td>
+                <td>
+                    <div class="attachments" th:if="${!msg.attachments.isEmpty()}">
+                        <a th:each="att : ${msg.attachments}" 
+                           th:href="@{/download/} + ${att.id}" 
+                           class="attachment-link" 
+                           th:text="${att.fileName}"></a>
+                    </div>
+                    <span th:if="${msg.attachments.isEmpty()}">-</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination" th:if="${page.totalPages > 1}">
+        <a class="page-item" th:if="${page.hasPrevious()}" th:href="@{/inbox(page=${page.number - 1})}">Previous</a>
+        <span th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}">
+            <a th:class="${i == page.number ? 'page-item active' : 'page-item'}" 
+               th:href="@{/inbox(page=${i})}" th:text="${i + 1}"></a>
+        </span>
+        <a class="page-item" th:if="${page.hasNext()}" th:href="@{/inbox(page=${page.number + 1})}">Next</a>
+    </div>
+
+</body>
+</html>
